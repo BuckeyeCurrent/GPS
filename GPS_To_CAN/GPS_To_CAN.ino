@@ -86,9 +86,9 @@ void setup()
   
   //Initialize the CAN-bus comms
 START_INIT:
-  if(CAN_OK == CAN.begin(CAN_500KBPS)) // Initialize at 500 kbaud speed
+  if(CAN_OK == CAN.begin(CAN_1000KBPS)) // Initialize at 1000 kbaud speed
   {
-    Serial.println("CAN-bus succesfully initialized at 500k");
+    Serial.println("CAN-bus succesfully initialized at 1000k");
   }
   else
   {
@@ -270,27 +270,17 @@ if (millis() - timer > 2000) {
       Serial.print("Speed (knots): "); Serial.println(GPS.speed);
       Serial.print("Angle: "); Serial.println(GPS.angle);
       Serial.print("Altitude: "); Serial.println(GPS.altitude);
-      Serial.print("Satellites: "); Serial.println((int)GPS.satellites);
+      Serial.print("HDOP"); Serial.println(GPS.HDOP);
+      Serial.print("Speed (MPH): "); Serial.println(gpsSpeedMPH.f32);
     }
   }
 
 
-
-
-
-
-
-
-
-
-
-
-  
   delay(20);
 }
 
 // Function for extracting bytes from a 16 bit integer
-byte extractByte(long value, int byteIdent) // Inputs are the integer value to concate and an ID for which byte to get (0 = lsb, 1 = msb)
+byte extractByte(long value, int byteIdent) // Inputs are the long value to concate and an ID for which byte to get (0 = lsb, 1 = msb)
 {
   byte output;
   if (byteIdent == 0)
