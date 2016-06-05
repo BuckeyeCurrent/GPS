@@ -246,6 +246,8 @@ CAN.sendMsgBuf(0x2C0,0,4,canOutAltitude); //GPS ALTITUDE CAN ID 704
 CAN.sendMsgBuf(0x2C1,0,5,canOutPrecision); //GPS PRECISION CAN ID 705 HDOP NUMBER OF SATELLITES
 CAN.sendMsgBuf(0x2C2,0,4,canOutSpeed); //GPS SPEED CAN ID 706 MPH
 
+/// section useful for debugging
+/*
 if (millis() - timer > 2000) { 
     timer = millis(); // reset the timer
     
@@ -274,9 +276,9 @@ if (millis() - timer > 2000) {
       Serial.print("Speed (MPH): "); Serial.println(gpsSpeedMPH.f32);
     }
   }
+*/
 
-
-  delay(20);
+  delay(50);
 }
 
 // Function for extracting bytes from a 16 bit integer
